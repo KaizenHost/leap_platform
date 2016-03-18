@@ -15,6 +15,7 @@ class LeapTest
   #         connect_port: 15984
   #
   def couchdb_urls_via_stunnel(path="", options=nil)
+    path = path.gsub('"', '%22')
     if options && options[:username] && options[:password]
       userpart = "%{username}:%{password}@" % options
     else
@@ -46,6 +47,7 @@ class LeapTest
   #         writable: true
   #
   def couchdb_url_via_haproxy(path="", options=nil)
+    path = path.gsub('"', '%22')
     if options && options[:username] && options[:password]
       userpart = "%{username}:%{password}@" % options
     else
@@ -66,6 +68,7 @@ class LeapTest
   #   port: 5984
   #
   def couchdb_url_via_localhost(path="", options=nil)
+    path = path.gsub('"', '%22')
     port = (options && options[:port]) || assert_property('couch.port')
     if options && options[:username]
       password = property("couch.users.%{username}.password" % options)
