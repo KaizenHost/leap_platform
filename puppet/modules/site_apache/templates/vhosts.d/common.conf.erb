@@ -1,5 +1,5 @@
 <VirtualHost *:80>
-  ServerName <%= webapp_domain %>
+  ServerName <%= scope.lookupvar('site_webapp::apache::webapp_domain') %>
   ServerAlias <%= domain_name %>
   ServerAlias <%= domain %>
   ServerAlias www.<%= domain %>
@@ -9,7 +9,7 @@
 </VirtualHost>
 
 <VirtualHost *:443>
-  ServerName <%= webapp_domain %>
+  ServerName <%= scope.lookupvar('site_webapp::apache::webapp_domain') %>
   ServerAlias <%= domain_name %>
   ServerAlias <%= domain %>
   ServerAlias www.<%= domain %>
